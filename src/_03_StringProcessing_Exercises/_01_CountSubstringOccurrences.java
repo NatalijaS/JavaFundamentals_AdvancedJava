@@ -18,6 +18,5 @@ public class _01_CountSubstringOccurrences {
         }
 
         System.out.println(count);
-
     }
 }

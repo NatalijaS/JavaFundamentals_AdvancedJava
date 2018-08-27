@@ -9,6 +9,7 @@ import java.util.List;
 public class _11_StringMatrixRotation {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         String[] rotation = reader.readLine().split("\\(|\\)");
         int angle = Integer.parseInt(rotation[1]);
         angle %= 360;
@@ -28,7 +29,6 @@ public class _11_StringMatrixRotation {
         int rotationTimes = angle / 90;
 
         switch (rotationTimes){
-
             case 0:
                 for (int row = 0; row < matrix.size(); row++) {
                     for (int col = 0; col < maxSize; col++) {

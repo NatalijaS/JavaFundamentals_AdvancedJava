@@ -26,16 +26,17 @@ public class _08_WeakStudents {
         }
 
         students.entrySet().stream()
-                .filter(x -> hasGrade(x.getValue()))
-                .forEach(x-> System.out.println(x.getKey().firstName + " " + x.getKey().lastName));
+                .filter(kvp -> hasGrade(kvp.getValue()))
+                .forEach(kvp-> System.out.println(kvp.getKey().firstName + " " + kvp.getKey().lastName));
     }
 
-    private static boolean hasGrade(List<Integer> x) {
-        List<Integer> grades = x.stream().filter(x1 -> x1 <= 3).collect(Collectors.toList());
+    private static boolean hasGrade(List<Integer> kvp) {
+        List<Integer> grades = kvp.stream().filter(kvp1 -> kvp1 <= 3).collect(Collectors.toList());
         return grades.size() >= 2;
     }
 }
 class StudentWithBadGrades{
+
     String firstName;
     String lastName;
 

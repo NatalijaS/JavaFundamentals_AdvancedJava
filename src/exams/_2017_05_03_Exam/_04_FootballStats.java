@@ -1,4 +1,4 @@
-package exams.ExamPreparationII;
+package exams._2017_05_03_Exam;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,21 +33,15 @@ public class _04_FootballStats {
             mathcScores.add(new String[]{reversedMatch,reversedScore});
         }
         String[] query = reader.readLine().split(", ");
-        for (int i = 0; i < query.length; i++) {
-            String host = query[i];
+        for (String host : query) {
             List<String[]> filtered = mathcScores.stream()
                     .filter(strings -> strings[0].startsWith(host))
                     .collect(Collectors.toList());
 
-            Collections.sort(filtered, new Comparator<String[]>() {
-                @Override
-                public int compare(String[] o1, String[] o2) {
-                    return o1[0].compareTo(o2[0]);
-                }
-            });
+            filtered.sort(Comparator.comparing(o -> o[0]));
 
             for (String[] row : filtered) {
-                System.out.printf("%s -> %s%n",row[0],row[1]);
+                System.out.printf("%s -> %s%n", row[0], row[1]);
             }
         }
     }

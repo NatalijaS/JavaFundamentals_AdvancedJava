@@ -30,7 +30,7 @@ public class _12_ToTheStars {
             String currentLocation = "space";
 
             for (StarSystem system : systems) {
-                if (system.isInsideStarSystem(currentLocationX, currentLocationY)){
+                if (system.isInsideStarSystem(currentLocationX, currentLocationY)) {
                     currentLocation = system.getName().toLowerCase();
                 }
             }
@@ -43,7 +43,7 @@ public class _12_ToTheStars {
 }
 
 class StarSystem {
-    String name;
+    private String name;
     private double centerPointX;
     private double centerPointY;
 
@@ -53,7 +53,7 @@ class StarSystem {
     private double lowerEdge;
     private double upperEdge;
 
-    public StarSystem(String name, double centerPointX, double centerPointY) {
+    StarSystem(String name, double centerPointX, double centerPointY) {
         this.name = name;
         this.centerPointX = centerPointX;
         this.centerPointY = centerPointY;
@@ -63,13 +63,10 @@ class StarSystem {
         this.upperEdge = centerPointY + 1;
     }
 
-    public boolean isInsideStarSystem(double coordinateX, double coordinateY) {
-        if (coordinateX >= this.leftEdge && coordinateX <= this.rightEdge
-                && coordinateY >= this.lowerEdge && coordinateY <= this.upperEdge) {
-            return true;
-        }
+    boolean isInsideStarSystem(double coordinateX, double coordinateY) {
+        return coordinateX >= this.leftEdge && coordinateX <= this.rightEdge
+                && coordinateY >= this.lowerEdge && coordinateY <= this.upperEdge;
 
-        return false;
     }
 
     public String getName() {
@@ -80,7 +77,7 @@ class StarSystem {
         this.name = name;
     }
 
-    public double getCenterPointX() {
+    private double getCenterPointX() {
         return centerPointX;
     }
 

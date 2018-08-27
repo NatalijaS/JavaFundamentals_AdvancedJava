@@ -15,7 +15,7 @@ public class _09_PhoneNumbers {
         String regex = "(?<name>[A-Z][a-zA-Z]*)[^+a-zA-Z]*?(?<number>\\+?[\\d]+?([()\\/.\\- ]*[\\d]+)+)";
         Pattern pattern = Pattern.compile(regex);
 
-        Map<String, String> phonebook = new LinkedHashMap<>();
+        Map<String, String> phoneBook = new LinkedHashMap<>();
 
         StringBuilder sb = new StringBuilder();
         String inputLine = reader.readLine();
@@ -29,17 +29,16 @@ public class _09_PhoneNumbers {
 
         while (matcher.find()) {
             String name = matcher.group("name");
-            String[] numberArgs = matcher.group("number").split("[()\\/.\\- ]");
+            String[] numberArgs = matcher.group("number").split("[()/.\\- ]");
             String number = String.join("", numberArgs);
 
-            phonebook.put(name, number);
+            phoneBook.put(name, number);
         }
 
-
-        if (phonebook.size() > 0) {
+        if (phoneBook.size() > 0) {
             System.out.print("<ol>");
-            for (String contact : phonebook.keySet()) {
-                System.out.print(String.format("<li><b>%s:</b> %s</li>", contact, phonebook.get(contact)));
+            for (String contact : phoneBook.keySet()) {
+                System.out.print(String.format("<li><b>%s:</b> %s</li>", contact, phoneBook.get(contact)));
             }
             System.out.print("</ol>");
         } else {

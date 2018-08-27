@@ -9,7 +9,7 @@ public class _02_UpperStrings {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Arrays.stream(reader.readLine().split(" "))
-                .map(name -> name.toUpperCase())
+                .map(String::toUpperCase)
                 .forEach(name -> System.out.print(name + " "));
     }
 }

@@ -13,22 +13,22 @@ public class _12_LittleJohn {
         int small = 0, medium = 0, large = 0;
 
         Pattern pattern = Pattern.compile("(?<small>>----->)|(?<medium>>>----->)|(>>>----->>)");
-        for(int i = 0 ;i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             String input = reader.readLine();
             Matcher matcher = pattern.matcher(input);
-            while (matcher.find()){
-                if(matcher.group("small")!=null){
+            while (matcher.find()) {
+                if (matcher.group("small") != null) {
                     small++;
-                }else if(matcher.group("medium")!=null){
+                } else if (matcher.group("medium") != null) {
                     medium++;
-                }else{
+                } else {
                     large++;
                 }
             }
         }
         String sum = small + "" + medium + "" + large;
         String binary = Integer.toBinaryString(Integer.valueOf(sum));
-        String reversedBinary = new StringBuilder(Integer.toBinaryString(Integer.valueOf(sum)) + "").reverse()+"";
-        System.out.println(Integer.valueOf(binary+reversedBinary, 2));
+        String reversedBinary = new StringBuilder(Integer.toBinaryString(Integer.valueOf(sum)) + "").reverse() + "";
+        System.out.println(Integer.valueOf(binary + reversedBinary, 2));
     }
 }

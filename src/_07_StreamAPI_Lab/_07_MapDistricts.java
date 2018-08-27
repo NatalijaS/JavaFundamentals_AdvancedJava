@@ -35,7 +35,7 @@ public class _07_MapDistricts {
         return e -> {
             System.out.print(e.getKey() + ": ");
             e.getValue().stream()
-                    .sorted((x1, x2) -> x2.compareTo(x1))
+                    .sorted(Comparator.reverseOrder())
                     .limit(5)
                     .forEach(d -> System.out.print(d + " "));
             System.out.println();

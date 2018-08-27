@@ -20,8 +20,8 @@ public class _03_StudentsByAge {
 
             line = reader.readLine().split("\\s+");
         }
-        students.entrySet().stream().filter(x -> x.getValue() >= 18 && x.getValue() <= 24)
-                .forEach(x -> System.out.println(x.getKey().firstName + " " + x.getKey().lastName + " " + x.getValue()));
+        students.entrySet().stream().filter(kvp -> kvp.getValue() >= 18 && kvp.getValue() <= 24)
+                .forEach(kvp -> System.out.printf("%s %d%n", kvp.getKey(), kvp.getValue()));
     }
 }
 

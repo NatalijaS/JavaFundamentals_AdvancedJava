@@ -20,8 +20,8 @@ public class _06_FilterStudentsByPhone {
         }
         students.entrySet()
                 .stream()
-                .filter(x -> x.getValue().startsWith("02") || x.getValue().startsWith("+3592"))
-                .forEach(x -> System.out.println(x.getKey().firstName + " " + x.getKey().lastName));
+                .filter(kvp -> kvp.getValue().startsWith("02") || kvp.getValue().startsWith("+3592"))
+                .forEach(kvp -> System.out.println(kvp.getKey().firstName + " " + kvp.getKey().lastName));
     }
 }
 

@@ -1,4 +1,4 @@
-package exams.Exam_22_10_2017;
+package exams._2017_10_22_Exam;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Problem_02 {
+public class _02_LittleAlchemy {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -19,17 +19,14 @@ public class Problem_02 {
         stones.addAll(numbers);
         ArrayDeque<Integer> gold = new ArrayDeque<>();
 
-        String line = reader.readLine();
-        while(!"Revision".equals(line)){
+        String line;
+        while(!"Revision".equals(line = reader.readLine())){
             String [] command = line.split("\\s+");
-
             switch (command[0]){
                 case "Apply":
-                    if(stones.isEmpty()){
-                       break;
-                    }else{
-                        int amoundOfAcid = Integer.parseInt(command[2]);
-                        for (int i = 0; i < amoundOfAcid; i++) {
+                    if(!stones.isEmpty()){
+                        int amountOfAcid = Integer.parseInt(command[2]);
+                        for (int i = 0; i < amountOfAcid; i++) {
                             if(stones.isEmpty()){
                                break;
                             }else {
@@ -45,16 +42,14 @@ public class Problem_02 {
                     }
                     break;
                 case "Air":
-                    if(gold.isEmpty()){
-                       break;
-                    }else{
+                    if(!gold.isEmpty()){
                         stones.add(Integer.parseInt(command[2]));
                         gold.pop();
                     }
                     break;
             }
-            line = reader.readLine();
         }
+
         for (Integer stone : stones) {
             System.out.print(stone + " ");
         }

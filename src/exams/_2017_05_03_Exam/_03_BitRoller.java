@@ -1,4 +1,4 @@
-package exams.ExamPreparationII;
+package exams._2017_05_03_Exam;
 
 
 import java.io.BufferedReader;
@@ -24,7 +24,7 @@ public class _03_BitRoller {
         System.out.println(n);
     }
 
-    public static int RollBitsRight(int n, int pillarPosition){
+    private static int RollBitsRight(int n, int pillarPosition){
         int result = 0;
         for (int pos = 0; pos < 19; pos++)
         {

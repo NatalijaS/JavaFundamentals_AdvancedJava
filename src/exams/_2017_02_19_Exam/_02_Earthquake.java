@@ -1,4 +1,4 @@
-package exams.ExamPreparationI;
+package exams._2017_02_19_Exam;
 
 
 import java.io.BufferedReader;

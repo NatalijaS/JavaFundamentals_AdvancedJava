@@ -3,78 +3,52 @@ package _07_StreamAPI_Exercises;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class _11_StudentsJoinedToSpecialties {
     public static void main(String[] args) throws IOException {
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        List<StudentSp> students = new ArrayList<>();
-        List<StudentSpeciality11> specialities = new ArrayList<>();
 
-        while (true){
-            String[] input = reader.readLine().split("\\s+");
-            if("Students:".equals(input[0])){
-                break;
-            }
-            String specialityName = input[0] +" " + input[1];
-            Integer facNum = Integer.valueOf(input[2]);
-            StudentSpeciality11 speciality = new StudentSpeciality11(specialityName, facNum);
-            specialities.add(speciality);
+        List<StudentSpecialty> specialties = new ArrayList<>();
+        Map<Integer, String> students = new HashMap<>();
+        for (String line = reader.readLine(); !line.equals("Students:"); line = reader.readLine()) {
+            int index = line.lastIndexOf(" ");
+            String name = line.substring(0, index);
+            int facultyNumber = Integer.parseInt(line.substring(index + 1));
+            specialties.add(new StudentSpecialty(name, facultyNumber));
+        }
+        for (String line = reader.readLine(); !line.equals("END"); line = reader.readLine()) {
+            int index = line.indexOf(" ");
+            int facultyNumber = Integer.parseInt(line.substring(0, index));
+            String name = line.substring(index + 1);
+            students.put(facultyNumber, name);
+        }
+        specialties.stream()
+                .sorted(Comparator.comparing(s -> students.get(s.getFacultyNumber())))
+                .forEach(s -> {
+                    System.out.printf("%s %d %s%n"
+                            , students.get(s.getFacultyNumber())
+                            , s.getFacultyNumber()
+                            , s.getName());
+                });
+    }
+
+    private static class StudentSpecialty {
+        private String name;
+        private int facultyNumber;
+
+        StudentSpecialty(String name, int facultyNumber) {
+            this.name = name;
+            this.facultyNumber = facultyNumber;
         }
 
-        while (true){
-            String[] input = reader.readLine().split("\\s+");
-            if("END".equals(input[0])){
-                break;
-            }
-            StudentSp student = new StudentSp(input[1] + " " + input[2], Integer.valueOf(input[0]));
-            students.add(student);
+        String getName() {
+            return name;
         }
 
-        students.stream().sorted(Comparator.comparing(StudentSp::get_name))
-                .forEach(student -> specialities.stream().filter((spec) -> spec.get_facultyNumber() == student.get_facultyNumber())
-                        .forEach(speciality ->
-                                System.out.printf("%s %s %s\n", student.get_name().trim(), student.get_facultyNumber(), speciality.get_name())));
-    }
-}
-class StudentSpeciality11{
-
-    private String _name;
-    private int _facultyNumber;
-
-    StudentSpeciality11(String name, int facultyNumber){
-        this._facultyNumber = facultyNumber;
-        this._name = name;
-    }
-
-    int get_facultyNumber() {
-        return _facultyNumber;
-    }
-
-    String get_name() {
-        return _name;
-    }
-}
-
-class StudentSp{
-
-    private String _name;
-    private int _facultyNumber;
-
-    StudentSp(String name, int facultyNumber){
-        this._facultyNumber = facultyNumber;
-        this._name = name;
-    }
-
-    int get_facultyNumber() {
-        return _facultyNumber;
-    }
-
-    String get_name() {
-        return _name;
+        int getFacultyNumber() {
+            return facultyNumber;
+        }
     }
 }
 

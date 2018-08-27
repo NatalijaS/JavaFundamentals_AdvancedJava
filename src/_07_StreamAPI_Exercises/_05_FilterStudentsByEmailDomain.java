@@ -20,12 +20,13 @@ public class _05_FilterStudentsByEmailDomain {
         }
         students.entrySet()
                 .stream()
-                .filter(x -> x.getValue().endsWith("@gmail.com"))
-                .forEach(x -> System.out.println(x.getKey().firstName + " " + x.getKey().lastName));
+                .filter(kvp -> kvp.getValue().endsWith("@gmail.com"))
+                .forEach(kvp -> System.out.println(kvp.getKey().firstName + " " + kvp.getKey().lastName));
     }
 }
 
 class StudentsWithMails {
+
     String firstName;
     String lastName;
 

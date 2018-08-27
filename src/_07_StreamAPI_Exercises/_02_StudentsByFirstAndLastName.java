@@ -18,7 +18,7 @@ public class _02_StudentsByFirstAndLastName {
 
             line = reader.readLine().split("\\s+");
         }
-        students.entrySet().stream().filter(x -> x.getValue() == 2)
-                .forEach(x -> System.out.println(x.getKey()));
+        students.entrySet().stream().filter(kvp -> kvp.getValue() == 2)
+                .forEach(kvp -> System.out.println(kvp.getKey()));
     }
 }

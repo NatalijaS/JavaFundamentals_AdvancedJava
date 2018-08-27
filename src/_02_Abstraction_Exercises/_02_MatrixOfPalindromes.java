@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class _02_MatrixOfPalindromes {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         String[] input = reader.readLine().split(" ");
         int rows = Integer.parseInt(input[0]);
         int cols = Integer.parseInt(input[1]);

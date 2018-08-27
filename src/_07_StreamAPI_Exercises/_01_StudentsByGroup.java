@@ -17,13 +17,13 @@ public class _01_StudentsByGroup {
         while (!"END".equals(line[0])){
             Student student = new Student(line[0], line[1]);
             students.putIfAbsent(student, 0);
-            students.put(student, Integer.valueOf(line[2]));
+            students.put(student, students.get(student) + Integer.valueOf(line[2]));
 
             line = reader.readLine().split("\\s+");
         }
-        students.entrySet().stream().filter(x -> x.getValue() == 2)
-                .sorted((x1, x2) -> x1.getKey().firstName.compareTo(x2.getKey().firstName))
-                .forEach(x -> System.out.println(x.getKey().firstName + " " + x.getKey().lastName));
+        students.entrySet().stream().filter(kvp -> kvp.getValue() == 2)
+                .sorted(Comparator.comparing(kvp -> kvp.getKey().firstName))
+                .forEach(kvp -> System.out.println(kvp.getKey().firstName + " " + kvp.getKey().lastName));
     }
 }
 class Student{
@@ -31,7 +31,7 @@ class Student{
    String firstName;
    String lastName;
 
-    public Student(String firstName, String lastName) {
+    Student(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

@@ -28,12 +28,13 @@ public class _07_ExcellentStudents {
         }
 
         students.entrySet().stream()
-                .filter(x -> x.getValue().contains(6))
-                .forEach(x -> System.out.println(x.getKey().firstName + " " + x.getKey().lastName));
+                .filter(kvp -> kvp.getValue().contains(6))
+                .forEach(kvp -> System.out.println(kvp.getKey().firstName + " " + kvp.getKey().lastName));
     }
 }
 
 class StudentWithGrades {
+
     String firstName;
     String lastName;
 

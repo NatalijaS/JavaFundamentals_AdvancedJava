@@ -17,11 +17,16 @@ public class _04_SortStudents {
             students.add(student);
             line = reader.readLine().split("\\s+");
         }
-        students.stream()
-                .sorted((x1, x2) -> x2.firstName.compareTo(x1.firstName))
-                .sorted((x1, x2) -> x1.lastName.compareTo(x2.lastName))
-                .forEach(x -> System.out.println(x.firstName + " " + x.lastName));
 
+        students.stream()
+                .sorted((s1, s2) -> {
+                    int comp = s1.lastName.compareTo(s2.lastName);
+                    if (comp == 0) {
+                        comp = s2.firstName.compareTo(s1.firstName);
+                    }
+                    return comp;
+                })
+                .forEach(s -> System.out.println(s.firstName + " " + s.lastName));
     }
 }
 

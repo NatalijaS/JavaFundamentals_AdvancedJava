@@ -35,9 +35,9 @@ public class _12_VehiclePark {
 
             }
         List result = new LinkedList();
-        for (int i = 0; i < parkVehicles.length; i++) {
-            if(!parkVehicles[i].equals(" "))
-                result.add(parkVehicles[i]);
+        for (String parkVehicle : parkVehicles) {
+            if (!parkVehicle.equals(" "))
+                result.add(parkVehicle);
         }
         System.out.print("Vehicles left: ");
         System.out.println(String.join(", ",result));
